@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Esercizi sulle classi js</title>
+  </head>
+  <body>
+    <h2>Form for Pets</h2>
+    <form id="petForm">
+      <label for="petName">Pet Name:</label>
+      <input type="text" id="petName" required /><br />
+
+      <label for="ownerName">Owner Name:</label>
+      <input type="text" id="ownerName" required /><br />
+
+      <label for="species">Species:</label>
+      <input type="text" id="species" required /><br />
+
+      <label for="breed">Breed:</label>
+      <input type="text" id="breed" required /><br />
+
+      <button type="button" onclick="addPet()">Add Pet</button>
+    </form>
+
+    <h2>List of Pets</h2>
+    <ul id="petList"></ul>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
