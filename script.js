@@ -59,13 +59,13 @@ const list = function (pet) {
   listItem.textContent =
     "Pet Name: " +
     pet.petName +
-    ", " +
+    ",   " +
     "Owner Name: " +
     pet.ownerName +
-    ", " +
+    ",   " +
     "Species: " +
     pet.species +
-    ", " +
+    ",   " +
     "Breed: " +
     pet.breed;
 
