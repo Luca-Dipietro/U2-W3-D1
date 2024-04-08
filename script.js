@@ -31,7 +31,7 @@ console.log(user3.compareAge(user4));
 
 //  Esercizio 2
 
-let owners = [];
+let pets = [];
 
 class Pet {
   constructor(_petName, _ownerName, _species, _breed) {
@@ -42,11 +42,12 @@ class Pet {
   }
 
   sameOwner(newPet) {
-    if (owners.includes(newPet.ownerName)) {
+    if (
+      pets.some((pet) => pet != newPet && pet.ownerName === newPet.ownerName)
+    ) {
       console.log(true);
     } else {
       console.log(false);
-      owners.push(newPet.ownerName);
     }
   }
 }
@@ -71,19 +72,30 @@ const list = function (pet) {
   petList.appendChild(listItem);
 };
 
-const addPet = function () {
-  const petName = document.getElementById("petName").value;
-  const ownerName = document.getElementById("ownerName").value;
-  const species = document.getElementById("species").value;
-  const breed = document.getElementById("breed").value;
+const addPet = function (event) {
+  event.preventDefault();
+
+  const petNameInput = document.getElementById("petName");
+  const ownerNameInput = document.getElementById("ownerName");
+  const speciesInput = document.getElementById("species");
+  const breedInput = document.getElementById("breed");
+  const petName = petNameInput.value;
+  const ownerName = ownerNameInput.value;
+  const species = speciesInput.value;
+  const breed = breedInput.value;
 
   const newPet = new Pet(petName, ownerName, species, breed);
 
   list(newPet);
-  newPet.sameOwner();
+  pets.push(newPet);
+  if (pets.length > 1) {
+    newPet.sameOwner(newPet);
+  }
 
-  document.getElementById("petName").value = "";
-  document.getElementById("ownerName").value = "";
-  document.getElementById("species").value = "";
-  document.getElementById("breed").value = "";
+  petNameInput.value = "";
+  ownerNameInput.value = "";
+  speciesInput.value = "";
+  breedInput.value = "";
 };
+
+document.getElementById("petForm").addEventListener("submit", addPet);
